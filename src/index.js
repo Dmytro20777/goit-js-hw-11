@@ -1,6 +1,9 @@
 import axios from 'axios';
 import Notiflix from 'notiflix';
 
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
+
 const BASE_URL = "https://pixabay.com/api/"
 const API_KEY = "41176155-9be796c939d7e3f0a6537aedf"
 const PER_PAGE = 40; 
@@ -41,6 +44,8 @@ async function fetchAndRenderImages() {
             Notiflix.Notify.info("Sorry, there are no images matching your search query. Please try again.");
             return;
         }
+
+        Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
 
         renderImages(hits);
 
