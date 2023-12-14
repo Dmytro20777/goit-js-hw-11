@@ -9,6 +9,7 @@ const loadMoreBtn = document.querySelector(".load-more");
 
 let currentPage = 1;
 let currentQuery = "";
+const PER_PAGE = 40;
 
 form.addEventListener("submit", handleFormSubmit);
 loadMoreBtn.addEventListener("click", loadMoreImages);
@@ -49,7 +50,7 @@ async function fetchAndRenderImages() {
 
     renderImages(hits);
 
-      if (hits.length < totalHits) {
+      if (currentPage * PER_PAGE < totalHits) {
         loadMoreBtn.style.display = "block";
     } else {
         loadMoreBtn.style.display = "none";
