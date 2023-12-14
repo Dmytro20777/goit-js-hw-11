@@ -31,6 +31,7 @@ async function handleFormSubmit(event) {
   await fetchAndRenderImages();
 }
 
+let hasDisplayedNotification = false; 
 
 async function fetchAndRenderImages() {
   try {
@@ -41,7 +42,10 @@ async function fetchAndRenderImages() {
       return;
     }
 
-    Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
+    if (!hasDisplayedNotification) {      
+     Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
+     hasDisplayedNotification = true; 
+       }
 
     renderImages(hits);
 
