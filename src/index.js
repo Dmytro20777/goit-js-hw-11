@@ -27,9 +27,12 @@ async function handleFormSubmit(event) {
   currentQuery = searchQuery;
   currentPage = 1;
   
+  loadMoreBtn.style.display = "none";
 
   clearGallery();
   await fetchAndRenderImages();
+
+  loadMoreBtn.style.display = "block";
 }
 
 let hasDisplayedNotification = false; 
