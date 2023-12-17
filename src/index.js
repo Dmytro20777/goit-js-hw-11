@@ -15,6 +15,8 @@ const PER_PAGE = 40;
 form.addEventListener("submit", handleFormSubmit);
 loadMoreBtn.addEventListener("click", loadMoreImages);
 
+loadMoreBtn.classList.add("hidden");
+
 async function handleFormSubmit(event) {
   event.preventDefault();
 
@@ -28,13 +30,15 @@ async function handleFormSubmit(event) {
   currentQuery = searchQuery;
   currentPage = 1;
   
-  loadMoreBtn.style.display = "none";
+  // loadMoreBtn.style.display = "none";
   // loadMoreBtn.classList.add("hidden");
+
+  loadMoreBtn.classList.remove("hidden");
 
   clearGallery();
   await fetchAndRenderImages();
 
-  loadMoreBtn.style.display = "block";
+  // loadMoreBtn.style.display = "block";
   // loadMoreBtn.classList.remove("hidden");
 }
 
