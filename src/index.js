@@ -11,6 +11,7 @@ let currentPage = 1;
 let currentQuery = "";
 const PER_PAGE = 40;
 
+
 form.addEventListener("submit", handleFormSubmit);
 loadMoreBtn.addEventListener("click", loadMoreImages);
 
@@ -28,11 +29,13 @@ async function handleFormSubmit(event) {
   currentPage = 1;
   
   loadMoreBtn.style.display = "none";
+  loadMoreBtn.classList.add("hidden");
 
   clearGallery();
   await fetchAndRenderImages();
 
   loadMoreBtn.style.display = "block";
+  loadMoreBtn.classList.remove("hidden");
 }
 
 let hasDisplayedNotification = false; 
